@@ -4,7 +4,7 @@
             <v-list-subheader>General</v-list-subheader>
 
             <v-list-item 
-                v-for="task, index in props.tasks"
+                v-for="task, index in taskStore.tasks"
                 :key="index"
                 :value="index">
                     <template v-slot:prepend="{ isActive }">
@@ -28,11 +28,15 @@
                         </template>
 
                         <v-list>
-                            <v-list-item value="1">
-                                <v-list-item-title @click="toggle">Edit</v-list-item-title>
+                            <v-list-item 
+                                value="1"
+                                @click="taskStore.toggleEdit(index)">
+                                    <v-list-item-title>Edit</v-list-item-title>
                             </v-list-item>
-                            <v-list-item value="2">
-                                <v-list-item-title @click="toggle">Delete</v-list-item-title>
+                            <v-list-item
+                                value="2"
+                                @click="taskStore.toggleDelete(index)">
+                                    <v-list-item-title>Delete</v-list-item-title>
                             </v-list-item>
                         </v-list>
                     </v-menu>
@@ -42,25 +46,18 @@
         </v-list>
         
         <DialogTaskFields
-            :dialog="showDialogTaskFields"
-            @toggle="toggle"/>
+            :task="taskStore.tasks[taskStore.indexTaskSelected]"/>
+        
+        <DialogDeleteTask />
     </div>
 </template>
 
 <script setup>
 
-import { ref, defineProps } from 'vue'
-
+import { useTaskStore } from '@/stores/task'
 import DialogTaskFields from './DialogTaskFields.vue'
+import DialogDeleteTask from './DialogDeleteTask.vue'
 
-const props = defineProps({
-    tasks: Object
-})
-
-const showDialogTaskFields = ref(false)
-
-const toggle = () => {
-    showDialogTaskFields.value = !showDialogTaskFields.value
-}
+const taskStore = useTaskStore()
 
 </script>

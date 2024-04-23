@@ -51,21 +51,22 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
 
-  const drawer = ref(null)
+import { ref } from 'vue'
 
-  const items = [
-    { text: 'Home', icon: 'mdi-home', to: '/' },
-  ]
+const drawer = ref(null)
+
+const items = [
+    { text: 'Home', icon: 'mdi-home', to: '/' }
+]
 
 </script>
 
 <style scoped>
 
-  a {
-    text-decoration: none;
-    color: #ffffff;
-  }
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
   
 </style>

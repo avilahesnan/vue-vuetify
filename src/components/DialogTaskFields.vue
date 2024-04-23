@@ -1,17 +1,26 @@
 <template>
     <div class="text-center pa-4">
         <v-dialog
-            v-model="props.dialog"
-            max-width="400"
+            v-model="taskStore.showDialogTaskFields"
+            min-width="400"
+            max-width="600"
             persistent>
                 <v-card
-                    prepend-icon="mdi-map-marker"
-                    text="Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
-                    title="Use Google's location service?">
+                    prepend-icon="mdi mdi-calendar-edit"
+                    title="Edit Task">
+                        <v-card-text>
+                            <v-text-field
+                                v-model="props.task.title"
+                                clearable label="Title">
+                            </v-text-field>
+                            <v-text-field
+                                v-model="props.task.description"
+                                clearable label="Description">
+                            </v-text-field>
+                        </v-card-text>
                         <template v-slot:actions>
                             <v-spacer></v-spacer>
-                            <v-btn @click="$emit('toggle')">Disagree</v-btn>
-                            <v-btn @click="$emit('toggle')">Agree</v-btn>
+                            <v-btn @click="taskStore.toggleEdit()">Ok</v-btn>
                         </template>
                 </v-card>
         </v-dialog>
@@ -22,8 +31,12 @@
 
 import { defineProps } from 'vue'
 
+import { useTaskStore } from '@/stores/task'
+
+const taskStore = useTaskStore()
+
 const props = defineProps({
-    dialog: Boolean
+    task: Object
 })
 
 </script>
