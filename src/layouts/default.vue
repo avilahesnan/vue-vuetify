@@ -1,20 +1,29 @@
 <template>
+    <Alert
+        v-if="alertStore.showAlert" />
     <v-app id="inspire">
         <v-navigation-drawer v-model="drawer">
-            <v-list>
-                <v-list-item
-                    prepend-avatar="https://raw.githubusercontent.com/yurimarcon/avatars/main/Colored/ToyFaces_Colored_BG_29.jpg"
-                    subtitle="To Do List"
-                    title="Hesnan Ávila">
-                        <template v-slot:append>
-                            <v-btn
-                                icon="mdi-menu-down"
-                                size="small"
-                                variant="text">
-                            </v-btn>
-                        </template>
-                </v-list-item>
-            </v-list>
+            <v-img
+                src="https://images.pexels.com/photos/705425/pexels-photo-705425.jpeg"
+                gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.5)"
+                height="80"
+                cover
+                padding="pt-2">
+                    <v-list>
+                        <v-list-item
+                            prepend-avatar="https://raw.githubusercontent.com/yurimarcon/avatars/main/Colored/ToyFaces_Colored_BG_29.jpg"
+                            subtitle="To Do List"
+                            title="Hesnan Ávila">
+                                <template v-slot:append>
+                                    <v-btn
+                                        icon="mdi-menu-down"
+                                        size="small"
+                                        variant="text">
+                                    </v-btn>
+                                </template>
+                        </v-list-item>
+                    </v-list>
+            </v-img>
 
             <v-divider></v-divider>
 
@@ -38,10 +47,19 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar>
-            <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar
+            color="teal-darken-4"
+            image="https://images.pexels.com/photos/1983032/pexels-photo-1983032.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            density="prominent">
+                <template v-slot:image>
+                    <v-img
+                        gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.5)"
+                        cover>
+                    </v-img>
+                </template>
+                <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-            <v-app-bar-title>To Do List</v-app-bar-title>
+                <v-app-bar-title>To Do List</v-app-bar-title>
         </v-app-bar>
 
         <v-main>
@@ -54,8 +72,11 @@
 
 import { ref } from 'vue'
 
-const drawer = ref(null)
+import Alert from '@/components/shared/Alert.vue'
+import { useAlertStore } from '@/stores/alert'
 
+const alertStore = useAlertStore()
+const drawer = ref(null)
 const items = [
     { text: 'Home', icon: 'mdi-home', to: '/' }
 ]
@@ -64,9 +85,9 @@ const items = [
 
 <style scoped>
 
-    a {
-        text-decoration: none;
-        color: #ffffff;
-    }
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
   
 </style>

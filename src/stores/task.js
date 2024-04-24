@@ -1,14 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+import { useAlertStore } from './alert'
+
+const alertStore = useAlertStore()
+
 export const useTaskStore = defineStore('task', {
   state: () => ({
-    tasks: [
-        {
-            title: 'Estudar Vue',
-            description: 'Estudar Vue com Vuetify...'
-        }
-    ],
+    tasks: [],
     titleTaskCreating: '',
     indexTaskSelected: ref(0),
     showDialogTaskFields: ref(false),
@@ -16,23 +15,33 @@ export const useTaskStore = defineStore('task', {
   }),
   actions: {
     addTask() {
-       this.tasks.push({
-            title: this.titleTaskCreating
-        })
-       this.titleTaskCreating = ''
-       this.saveLocalData()
+        if(this.titleTaskCreating.length <= 5) {
+            return
+        }
+        this.tasks.push({
+                title: this.titleTaskCreating,
+                done: false
+            })
+        this.titleTaskCreating = ''
+        this.saveLocalData()
+        alertStore.notifyAlertCreated()
+    },
+    updateTask() {
+        this.saveLocalData()
+        this.toggleEdit()
+        alertStore.notifyAlertUpdated()
     },
     deleteTask() {
         this.tasks.splice(this.indexTaskSelected, 1)
         this.toggleDelete()
         this.saveLocalData()
+        alertStore.notifyAlertDeleted()
     },
     toggleEdit(index) {
         this.showDialogTaskFields = !this.showDialogTaskFields
         if(index != null) {
             this.indexTaskSelected = index
         }
-        this.saveLocalData()
     },
     toggleDelete(index) {
         this.showDialogDeleteTask = !this.showDialogDeleteTask
@@ -40,8 +49,18 @@ export const useTaskStore = defineStore('task', {
             this.indexTaskSelected = index
         }
     },
+    toggleDoneTask(index) {
+        this.tasks[index].done = !this.tasks[index].done
+        this.saveLocalData()
+    },
     saveLocalData() {
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    },
+    getTasks() {
+        let items = localStorage.getItem('tasks')
+        if(items) {
+            this.tasks = JSON.parse(items)
+        }
     }
   }
 })

@@ -7,7 +7,8 @@
             persistent>
                 <v-card
                     prepend-icon="mdi mdi-calendar-edit"
-                    title="Edit Task">
+                    title="Edit Task"
+                    @keyup.enter="taskStore.updateTask()">
                         <v-card-text>
                             <v-text-field
                                 v-model="props.task.title"
@@ -20,7 +21,12 @@
                         </v-card-text>
                         <template v-slot:actions>
                             <v-spacer></v-spacer>
-                            <v-btn @click="taskStore.toggleEdit()">Ok</v-btn>
+                            <v-btn
+                                color="blue-lighten-1"
+                                variant="elevated"
+                                @click="taskStore.updateTask()">
+                                    Ok
+                            </v-btn>
                         </template>
                 </v-card>
         </v-dialog>
