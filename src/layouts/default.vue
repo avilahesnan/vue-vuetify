@@ -10,18 +10,13 @@
                 cover
                 padding="pt-2">
                     <v-list>
-                        <v-list-item
-                            prepend-avatar="https://raw.githubusercontent.com/yurimarcon/avatars/main/Colored/ToyFaces_Colored_BG_29.jpg"
-                            subtitle="To Do List"
-                            title="Hesnan Ávila">
-                                <template v-slot:append>
-                                    <v-btn
-                                        icon="mdi-menu-down"
-                                        size="small"
-                                        variant="text">
-                                    </v-btn>
-                                </template>
-                        </v-list-item>
+                        <a href="https://github.com/avilahesnan" target="_blank">
+                            <v-list-item
+                                prepend-avatar="../../public/photo-anime.jpeg"
+                                subtitle="Developer"
+                                title="Hesnan Ávila">
+                            </v-list-item>
+                        </a>
                     </v-list>
             </v-img>
 
@@ -49,7 +44,7 @@
 
         <v-app-bar
             color="teal-darken-4"
-            image="https://images.pexels.com/photos/1983032/pexels-photo-1983032.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image="https://images.pexels.com/photos/705425/pexels-photo-705425.jpeg"
             density="prominent">
                 <template v-slot:image>
                     <v-img
@@ -78,7 +73,8 @@ import { useAlertStore } from '@/stores/alert'
 const alertStore = useAlertStore()
 const drawer = ref(null)
 const items = [
-    { text: 'Home', icon: 'mdi-home', to: '/' }
+    { text: 'Home', icon: 'mdi-home', to: '/' },
+    { text: 'About', icon: 'mdi-information', to: '/about' }
 ]
 
 </script>

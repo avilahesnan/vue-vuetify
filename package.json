@@ -1,6 +1,6 @@
 {
-  "name": "vue-vuetify",
-  "version": "0.0.0",
+  "name": "to-do-list",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -31,6 +31,7 @@
     "unplugin-vue-components": "^0.26.0",
     "unplugin-vue-router": "^0.8.4",
     "vite": "^5.1.5",
+    "vite-plugin-pwa": "^0.19.8",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-vuetify": "^2.0.3",
     "vue-router": "^4.3.0"

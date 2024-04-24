@@ -26,9 +26,15 @@ const alertStore = useAlertStore()
 .alert-notification {
     position: fixed;
     z-index: 1;
-    bottom: 50px;
+    bottom: 5%;
     width: 100%;
     padding: 0 35%;
+}
+
+@media screen and (max-width: 768px) {
+    .alert-notification {
+        padding: 0 5%;
+    }
 }
 
 </style>
