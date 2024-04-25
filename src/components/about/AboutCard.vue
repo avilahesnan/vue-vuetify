@@ -38,7 +38,7 @@ const show = ref(false)
 }
 @media screen and (max-width: 1024px) {
     .mx-auto {
-        max-width: 200px;
+        max-width: 180px;
         border-radius: 10%;
     }
     .image {
@@ -50,11 +50,8 @@ const show = ref(false)
 }
 @media screen and (max-width: 768px) {
     .mx-auto {
-        max-width: 100px;
+        max-width: 150px;
         border-radius: 50%;
-    }
-    .image {
-        height: 100px;
     }
     .title {
         display: none;
