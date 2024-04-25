@@ -5,7 +5,6 @@
         v-model="taskStore.titleTaskCreating"
         @keyup.enter="taskStore.addTask">
     </v-text-field>
-
     <ListTasks />
 </template>
 

@@ -19,9 +19,7 @@
                         </a>
                     </v-list>
             </v-img>
-
             <v-divider></v-divider>
-
             <v-list
                 :lines="false"
                 density="compact"
@@ -33,15 +31,14 @@
                             <v-list-item
                                 :value="item"
                                 color="primary">
-                                <template v-slot:prepend>
-                                    <v-icon :icon="item.icon"></v-icon>
-                                </template>
-                                <v-list-item-title :textContent="item.text"></v-list-item-title>
+                                    <template v-slot:prepend>
+                                        <v-icon :icon="item.icon"></v-icon>
+                                    </template>
+                                    <v-list-item-title :textContent="item.text"></v-list-item-title>
                             </v-list-item>
                     </router-link>
             </v-list>
         </v-navigation-drawer>
-
         <v-app-bar
             color="teal-darken-4"
             image="https://images.pexels.com/photos/705425/pexels-photo-705425.jpeg"
@@ -53,10 +50,8 @@
                     </v-img>
                 </template>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
                 <v-app-bar-title>To Do List</v-app-bar-title>
         </v-app-bar>
-
         <v-main>
             <router-view></router-view>
         </v-main>

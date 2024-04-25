@@ -2,7 +2,6 @@
     <div>
         <v-list lines="three" select-strategy="classic">
             <v-list-subheader>Tasks</v-list-subheader>
-
             <v-list-item 
                 v-for="task, index in taskStore.tasks"
                 :key="index"
@@ -13,10 +12,8 @@
                             <v-checkbox-btn :model-value="task.done"></v-checkbox-btn>
                         </v-list-item-action>
                     </template>
-
                 <v-list-item-title>{{ task.title }}</v-list-item-title>
                 <v-list-item-subtitle>{{ task.description }}</v-list-item-subtitle>
-
                 <template v-slot:append>
                     <v-menu>
                         <template v-slot:activator="{ props }">
@@ -27,7 +24,6 @@
                                 v-bind="props">
                             </v-btn>
                         </template>
-
                         <v-list>
                             <v-list-item 
                                 value="1"
@@ -42,13 +38,9 @@
                         </v-list>
                     </v-menu>
                 </template>
-
             </v-list-item>
-        </v-list>
-        
-        <DialogTaskFields
-            :task="taskStore.tasks[taskStore.indexTaskSelected]"/>
-        
+        </v-list>  
+        <DialogTaskFields :task="taskStore.tasks[taskStore.indexTaskSelected]"/>
         <DialogDeleteTask />
     </div>
 </template>
