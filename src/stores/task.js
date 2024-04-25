@@ -19,9 +19,9 @@ export const useTaskStore = defineStore('task', {
             return
         }
         this.tasks.push({
-                title: this.titleTaskCreating,
-                done: false
-            })
+            title: this.titleTaskCreating,
+            done: false
+        })
         this.titleTaskCreating = ''
         this.saveLocalData()
         alertStore.notifyAlertCreated()
